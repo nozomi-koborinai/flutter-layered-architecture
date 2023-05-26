@@ -11,12 +11,17 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
+  flutter_riverpod: ^2.3.6
+  freezed: ^2.3.4
+  freezed_annotation: ^2.2.0
+  hexcolor: ^3.0.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^2.0.0
+  build_runner: ^2.4.4
 
 flutter:
 
