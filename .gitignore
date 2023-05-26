@@ -47,4 +47,6 @@ app.*.map.json
 windows
 macos
 linux
+
 .czrc
+.vscode
