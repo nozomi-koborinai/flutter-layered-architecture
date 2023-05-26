@@ -10,8 +10,8 @@ final userRepositoryProvider = Provider<UserRepository>(
 
 /// User テーブル 及び 認証 に関するリポジトリ
 abstract interface class UserRepository {
-  /// 新規ユーザー登録
-  Future<void> createUser({
+  /// サインアップ
+  Future<void> signUp({
     required String email,
     required String password,
   });
