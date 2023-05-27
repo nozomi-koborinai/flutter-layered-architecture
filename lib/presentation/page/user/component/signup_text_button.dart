@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_reference_app_2/presentation/page/user/signup_page.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SignupTextButton extends StatelessWidget {
+class SignupTextButton extends ConsumerWidget {
   const SignupTextButton({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return TextButton(
       onPressed: () {
-        // 新規ユーザー登録画面へ遷移する処理をここに書く
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const SignupPage()),
+        );
       },
       child: const Text('Sign up'),
     );

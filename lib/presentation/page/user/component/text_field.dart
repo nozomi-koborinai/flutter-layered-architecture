@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_reference_app_2/application/usecase/user/state/text_controller_provider.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// Email アドレス入力用テキストフィールド
-class EmailTextField extends ConsumerWidget {
-  const EmailTextField({super.key});
+class EmailTextField extends StatelessWidget {
+  const EmailTextField({
+    required this.controller,
+    super.key,
+  });
+  final TextEditingController controller;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return TextField(
-      controller: ref.watch(emailControllerProvider),
+      controller: controller,
       decoration: const InputDecoration(
         labelText: 'Email Address',
       ),
@@ -19,13 +21,14 @@ class EmailTextField extends ConsumerWidget {
 }
 
 /// Password 入力用テキストフィールド
-class PasswordTextField extends ConsumerWidget {
-  const PasswordTextField({super.key});
+class PasswordTextField extends StatelessWidget {
+  const PasswordTextField({required this.controller, super.key});
+  final TextEditingController controller;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return TextField(
-      controller: ref.watch(passwordControllerProvider),
+      controller: controller,
       decoration: const InputDecoration(
         labelText: 'Password',
       ),
