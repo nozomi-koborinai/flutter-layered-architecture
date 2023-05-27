@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_reference_app_2/application/usecase/user/state/user_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// Signin Email アドレス入力用のテキストコントローラープロバイダー
@@ -65,7 +66,7 @@ class PasswordTextField extends StatelessWidget {
 /// ユーザー名入力用のテキストコントローラープロバイダー
 final userNameControllerProvider =
     StateProvider.autoDispose<TextEditingController>(
-  (_) => TextEditingController(),
+  (ref) => TextEditingController(text: ref.watch(userProvider)?.userName),
 );
 
 /// ユーザー名入力用テキストフィールド

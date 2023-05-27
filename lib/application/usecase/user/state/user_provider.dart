@@ -6,4 +6,13 @@ import '../../../../domain/user/entity/user.dart';
 final uidProvider = StateProvider<String?>((_) => null);
 
 /// 認証後ユーザーの情報を保持するプロバイダー
-final userProvider = StateProvider<User?>((_) => null);
+final userProvider = NotifierProvider<CurrentUser, User?>(CurrentUser.new);
+
+class CurrentUser extends Notifier<User?> {
+  @override
+  User? build() {
+    return null;
+  }
+
+  void set(User? user) => state = user?.copyWith();
+}

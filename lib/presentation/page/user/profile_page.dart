@@ -10,7 +10,7 @@ class ProfilePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user = ref.watch(userProvider);
+    final userName = ref.watch(userProvider)?.userName;
     return Scaffold(
       appBar: AppBar(
         title: const Text('プロフィール'),
@@ -39,7 +39,7 @@ class ProfilePage extends ConsumerWidget {
               const UserImage(),
               const SizedBox(height: 16.0),
               Text(
-                user == null ? '' : user.userName,
+                userName ?? '',
                 style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,

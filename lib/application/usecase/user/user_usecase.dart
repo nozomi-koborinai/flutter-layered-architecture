@@ -48,7 +48,7 @@ class UserUsecase with RunUsecaseMixin {
         password: password,
       );
       ref.watch(uidProvider.notifier).state = user.id;
-      ref.watch(userProvider.notifier).state = user;
+      ref.watch(userProvider.notifier).set(user);
     });
   }
 
@@ -58,12 +58,15 @@ class UserUsecase with RunUsecaseMixin {
     required String userName,
     required File? image,
   }) async {
-    if (uid == null || image == null) return;
+    if (uid == null) return;
     await execute(ref, () async {
-      final imageUrl = await storageService.uploadImage(image: image);
+      var imageUrl = '';
+      if (image != null) {
+        imageUrl = await storageService.uploadImage(image: image);
+      }
       final user = User(id: uid, userName: userName, imageUrl: imageUrl);
       final updatedUser = await userRepository.register(user: user);
-      ref.watch(userProvider.notifier).state = updatedUser;
+      ref.watch(userProvider.notifier).set(updatedUser);
     });
   }
 }
