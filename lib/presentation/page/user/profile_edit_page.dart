@@ -12,7 +12,7 @@ class ProfileEditPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('プロフィール編集'),
+        title: const Text('Profile Edit'),
       ),
       body: const Padding(
         padding: EdgeInsets.all(16.0),

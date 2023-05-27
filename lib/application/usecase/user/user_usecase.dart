@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_reference_app_2/application/usecase/run_usecase_mixin.dart';
+import 'package:flutter_reference_app_2/application/usecase/user/state/user_provider.dart';
 import 'package:flutter_reference_app_2/domain/service/storage_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -28,7 +29,11 @@ class UserUsecase with RunUsecaseMixin {
     required String password,
   }) async {
     await execute(ref, () async {
-      await userRepository.signUp(email: email, password: password);
+      final uid = await userRepository.signUp(
+        email: email,
+        password: password,
+      );
+      ref.watch(uidProvider.notifier).state = uid;
     });
   }
 
@@ -38,11 +43,16 @@ class UserUsecase with RunUsecaseMixin {
     required String password,
   }) async {
     await execute(ref, () async {
-      await userRepository.signIn(email: email, password: password);
+      final user = await userRepository.signIn(
+        email: email,
+        password: password,
+      );
+      ref.watch(uidProvider.notifier).state = user.id;
+      ref.watch(userProvider.notifier).state = user;
     });
   }
 
-  /// ユーザー情報追加
+  /// ユーザー情報追加 または 更新
   Future<void> registerUser({
     required String? uid,
     required String userName,
@@ -52,7 +62,8 @@ class UserUsecase with RunUsecaseMixin {
     await execute(ref, () async {
       final imageUrl = await storageService.uploadImage(image: image);
       final user = User(id: uid, userName: userName, imageUrl: imageUrl);
-      await userRepository.register(user: user);
+      final updatedUser = await userRepository.register(user: user);
+      ref.watch(userProvider.notifier).state = updatedUser;
     });
   }
 }
