@@ -114,6 +114,9 @@ class MockPostRepository implements PostRepository {
   @override
   Future<void> add({required Post post}) async {
     await Future.delayed(const Duration(seconds: 2));
+    post = post.copyWith(
+        imageUrl:
+            'https://1.bp.blogspot.com/-rb5mSYSN8pA/X6tmegQM2ZI/AAAAAAABcLw/_-n5UvfxhJItVJnKRrycKPShVDsxStrjACNcBGAsYHQ/s400/fruit_apple_yellow.png');
     mockPosts.add(post);
   }
 
@@ -138,6 +141,9 @@ class MockPostRepository implements PostRepository {
   @override
   Future<void> update({required Post post}) async {
     await Future.delayed(const Duration(seconds: 2));
+    post = post.copyWith(
+        imageUrl:
+            'https://1.bp.blogspot.com/-rb5mSYSN8pA/X6tmegQM2ZI/AAAAAAABcLw/_-n5UvfxhJItVJnKRrycKPShVDsxStrjACNcBGAsYHQ/s400/fruit_apple_yellow.png');
     var index =
         mockPosts.indexWhere((existingPost) => existingPost.id == post.id);
     if (index == -1) return;
