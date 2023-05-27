@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_reference_app_2/presentation/page/post/component/post_view.dart';
 import 'package:flutter_reference_app_2/presentation/page/post/post_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -12,7 +13,7 @@ class PostViewPage extends ConsumerWidget {
         title: const Text('Posts'),
         automaticallyImplyLeading: false,
       ),
-      body: const Placeholder(),
+      body: const PostView(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(

@@ -46,8 +46,6 @@ class PostUsecase with RunUsecaseMixin {
 
   /// 全投稿情報を取得する
   Future<List<Post>> fetchAllPosts() async {
-    return await execute(ref, () async {
-      return await postRepository.fetchAll();
-    });
+    return await postRepository.fetchAll();
   }
 }
