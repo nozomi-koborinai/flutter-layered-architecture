@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_reference_app_2/presentation/page/user/login_page.dart';
+import 'package:flutter_reference_app_2/presentation/page/user/signin_page.dart';
 import 'package:flutter_reference_app_2/presentation/theme.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -17,7 +17,7 @@ class App extends ConsumerWidget {
       debugShowCheckedModeBanner: false,
       scaffoldMessengerKey: ref.watch(scaffoldMessengerKeyProvider),
       theme: ref.read(themeProvider),
-      home: LoginPage(),
+      home: const SigninPage(),
       builder: (context, child) {
         return Consumer(
           builder: (context, ref, _) {

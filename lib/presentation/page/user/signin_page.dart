@@ -4,17 +4,14 @@ import 'package:flutter_reference_app_2/presentation/page/user/component/signup_
 import 'package:flutter_reference_app_2/presentation/page/user/component/text_field.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class LoginPage extends ConsumerWidget {
-  LoginPage({super.key});
-
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+class SigninPage extends ConsumerWidget {
+  const SigninPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('SNS'),
+        title: const Text('Sign in'),
       ),
       body: const Padding(
         padding: EdgeInsets.all(16.0),
