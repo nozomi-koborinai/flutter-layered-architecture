@@ -22,11 +22,8 @@ abstract interface class UserRepository {
     required String password,
   });
 
-  /// User テーブルへユーザーレコードを追加
-  Future<void> add({required User user});
-
-  /// User テーブル内のユーザーレコードを更新
-  Future<void> update({required User user});
+  /// User テーブルへユーザーレコードを追加 または 更新
+  Future<void> register({required User user});
 
   /// User テーブル内のユーザーレコードを削除
   Future<void> delete({required String uid});

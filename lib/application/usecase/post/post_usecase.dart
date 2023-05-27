@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter_reference_app_2/domain/service/storage_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../domain/post/entity/post.dart';
@@ -15,10 +16,12 @@ final postUsecaseProvider = Provider<PostUsecase>(
 /// 投稿ユースケース
 class PostUsecase with RunUsecaseMixin {
   PostUsecase(this.ref) {
-    postRepository = ref.read(postRepositoryProvider);
+    postRepository = ref.watch(postRepositoryProvider);
+    storageService = ref.watch(storageServiceProvider);
   }
   final Ref ref;
   late PostRepository postRepository;
+  late StorageService storageService;
 
   /// 新規投稿をする
   Future<void> addPost({
@@ -27,7 +30,7 @@ class PostUsecase with RunUsecaseMixin {
     required User user,
   }) async {
     await execute(ref, () async {
-      final imageUrl = await postRepository.uploadImage(image: image);
+      final imageUrl = await storageService.uploadImage(image: image);
       await postRepository.add(
         post: Post(
           id: null,

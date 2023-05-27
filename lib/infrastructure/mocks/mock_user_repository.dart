@@ -15,12 +15,7 @@ class MockUserRepository implements UserRepository {
   }
 
   @override
-  Future<void> add({required User user}) async {
-    await Future.delayed(const Duration(seconds: 2));
-  }
-
-  @override
-  Future<void> update({required User user}) async {
+  Future<void> register({required User user}) async {
     await Future.delayed(const Duration(seconds: 2));
   }
 

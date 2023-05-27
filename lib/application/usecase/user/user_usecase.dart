@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter_reference_app_2/application/usecase/run_usecase_mixin.dart';
+import 'package:flutter_reference_app_2/domain/service/storage_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../domain/user/entity/user.dart';
@@ -12,10 +15,12 @@ final userUsecaseProvider = Provider<UserUsecase>(
 /// ユーザーに関するユースケースを実現するためのクラス
 class UserUsecase with RunUsecaseMixin {
   UserUsecase(this.ref) {
-    userRepository = ref.read(userRepositoryProvider);
+    userRepository = ref.watch(userRepositoryProvider);
+    storageService = ref.watch(storageServiceProvider);
   }
   final Ref ref;
   late UserRepository userRepository;
+  late StorageService storageService;
 
   /// サインアップ
   Future<void> signUp({
@@ -39,13 +44,15 @@ class UserUsecase with RunUsecaseMixin {
 
   /// ユーザー情報追加
   Future<void> registerUser({
-    required String uid,
+    required String? uid,
     required String userName,
-    required String imageUrl,
+    required File image,
   }) async {
+    if (uid == null) return;
     await execute(ref, () async {
+      final imageUrl = await storageService.uploadImage(image: image);
       final user = User(id: uid, userName: userName, imageUrl: imageUrl);
-      userRepository.add(user: user);
+      userRepository.register(user: user);
     });
   }
 }
