@@ -17,6 +17,10 @@ final themeProvider = Provider(
       snackBarTheme: const SnackBarThemeData(
         behavior: SnackBarBehavior.floating,
       ),
+      textTheme: TextTheme(
+          bodyLarge: TextStyle(color: Colors.grey[700]),
+          bodyMedium: TextStyle(color: Colors.grey[700]),
+          bodySmall: TextStyle(color: Colors.grey[700])),
       appBarTheme: AppBarTheme(
         centerTitle: true,
         titleTextStyle: TextStyle(
