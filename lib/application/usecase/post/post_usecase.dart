@@ -25,10 +25,11 @@ class PostUsecase with RunUsecaseMixin {
 
   /// 新規投稿をする
   Future<void> addPost({
-    required File image,
+    required File? image,
     required String comment,
-    required User user,
+    required User? user,
   }) async {
+    if (image == null || user == null) return;
     await execute(ref, () async {
       final imageUrl = await storageService.uploadImage(image: image);
       await postRepository.add(
