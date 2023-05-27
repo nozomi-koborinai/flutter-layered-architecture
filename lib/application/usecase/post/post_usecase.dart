@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter_reference_app_2/application/usecase/post/state/posts_provider.dart';
 import 'package:flutter_reference_app_2/domain/service/storage_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -41,6 +42,7 @@ class PostUsecase with RunUsecaseMixin {
           createdAt: null,
         ),
       );
+      ref.invalidate(postsProvider);
     });
   }
 
