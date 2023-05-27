@@ -6,7 +6,8 @@ import 'package:flutter_reference_app_2/domain/user/user_repository.dart';
 class MockUserRepository implements UserRepository {
   final mockUserId = 'mockuser000';
   final mockUserName = 'Mock User';
-  final mockUserImageUrl = 'https://example.com/mockuser.jpg';
+  final mockUserImageUrl =
+      'https://1.bp.blogspot.com/-_JwCwOPPE1s/X9GYHH3CirI/AAAAAAABctM/RpxqJYP7syENbaaWyNIfhi2SsLGeNaEQgCNcBGAsYHQ/s400/food_sushi_kobore_ikura_don.png';
 
   @override
   Future<User> signIn({required String email, required String password}) async {

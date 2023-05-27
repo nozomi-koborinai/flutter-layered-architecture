@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_reference_app_2/presentation/page/user/profile_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// ボトムバー選択中インデックスプロバイダー
@@ -17,7 +18,7 @@ enum IndexMode {
 class HomePage extends ConsumerWidget {
   final List<Widget> _children = [
     const MockWidget(Colors.green),
-    const MockWidget(Colors.blue),
+    const ProfilePage(),
   ];
 
   HomePage({super.key});
