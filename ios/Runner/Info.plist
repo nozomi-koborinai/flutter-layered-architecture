@@ -4,6 +4,10 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Photo Library Access Warning</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Camera Library Access Warning</string>
 	<key>CFBundleDisplayName</key>
 	<string>Flutter Reference App 2</string>
 	<key>CFBundleExecutable</key>
