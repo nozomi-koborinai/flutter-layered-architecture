@@ -20,9 +20,9 @@ class RegisterButton extends ConsumerWidget {
             );
         ref.watch(currentIndexProvider.notifier).state =
             IndexMode.profile.index;
-        Navigator.push(
-          context,
+        Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (context) => HomePage()),
+          (route) => false, // false を返すことで全ての画面履歴を削除します
         );
       },
       child: const Text('Register'),

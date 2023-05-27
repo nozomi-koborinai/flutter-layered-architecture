@@ -30,8 +30,8 @@ class MockUserRepository implements UserRepository {
   Future<User> register({required User user}) async {
     await Future.delayed(const Duration(seconds: 2));
     return User(
-      id: mockUserId,
-      userName: mockUserName,
+      id: user.id,
+      userName: user.userName,
       imageUrl: mockUserImageUrl,
     );
   }
@@ -46,8 +46,9 @@ class MockUserRepository implements UserRepository {
     await Future.delayed(const Duration(seconds: 2));
     return User(
       id: uid,
-      userName: 'Mock User',
-      imageUrl: 'https://example.com/mockuser.jpg',
+      userName: '${mockUserName}2',
+      imageUrl:
+          'https://1.bp.blogspot.com/-Ax7y4QVbj-c/X5OcVJn04jI/AAAAAAABb8g/aWzcFaud_V42uAc_3xPTisdrKCDeg_OvQCNcBGAsYHQ/s400/food_yukkejan.png',
     );
   }
 }

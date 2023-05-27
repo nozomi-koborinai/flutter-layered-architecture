@@ -16,7 +16,7 @@ class SigninButton extends ConsumerWidget {
               email: ref.watch(signinEmailControllerProvider).text,
               password: ref.watch(signinPasswordControllerProvider).text,
             );
-        Navigator.push(
+        Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => HomePage()),
         );

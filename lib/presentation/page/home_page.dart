@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_reference_app_2/presentation/page/post/post_view_page.dart';
 import 'package:flutter_reference_app_2/presentation/page/user/profile_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -17,7 +18,7 @@ enum IndexMode {
 /// ホームページ
 class HomePage extends ConsumerWidget {
   final List<Widget> _children = [
-    const MockWidget(Colors.green),
+    const PostViewPage(),
     const ProfilePage(),
   ];
 
@@ -43,20 +44,6 @@ class HomePage extends ConsumerWidget {
           )
         ],
       ),
-    );
-  }
-}
-
-/// それぞれのページが完成するまでの仮ウィジェット
-class MockWidget extends StatelessWidget {
-  final Color color;
-
-  const MockWidget(this.color, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: color,
     );
   }
 }
