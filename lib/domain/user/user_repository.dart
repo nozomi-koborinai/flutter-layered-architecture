@@ -11,19 +11,19 @@ final userRepositoryProvider = Provider<UserRepository>(
 /// User テーブル 及び 認証 に関するリポジトリ
 abstract interface class UserRepository {
   /// サインアップ
-  Future<void> signUp({
+  Future<String> signUp({
     required String email,
     required String password,
   });
 
   /// サインイン
-  Future<void> signIn({
+  Future<User> signIn({
     required String email,
     required String password,
   });
 
   /// User テーブルへユーザーレコードを追加 または 更新
-  Future<void> register({required User user});
+  Future<User> register({required User user});
 
   /// User テーブル内のユーザーレコードを削除
   Future<void> delete({required String uid});
