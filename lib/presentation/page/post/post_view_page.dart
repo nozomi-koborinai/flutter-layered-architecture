@@ -10,7 +10,7 @@ class PostViewPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Posts'),
+        title: const Text('投稿リスト'),
         automaticallyImplyLeading: false,
       ),
       body: const PostView(),

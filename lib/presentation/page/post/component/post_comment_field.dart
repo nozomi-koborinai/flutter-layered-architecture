@@ -15,7 +15,7 @@ class PostCommentField extends ConsumerWidget {
     return TextField(
       controller: ref.watch(postCommentControllerProvider),
       decoration: const InputDecoration(
-        labelText: 'comment',
+        labelText: 'コメント',
         border: OutlineInputBorder(),
       ),
       maxLines: 4,

@@ -13,7 +13,7 @@ class ProfilePage extends ConsumerWidget {
     final user = ref.watch(userProvider);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profile'),
+        title: const Text('プロフィール'),
         automaticallyImplyLeading: false,
         actions: [
           Padding(

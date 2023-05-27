@@ -19,7 +19,7 @@ class PostButton extends ConsumerWidget {
             );
         Navigator.pop(context);
       },
-      child: const Text('Post'),
+      child: const Text('投稿'),
     );
   }
 }

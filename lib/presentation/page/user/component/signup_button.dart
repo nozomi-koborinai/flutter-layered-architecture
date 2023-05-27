@@ -10,7 +10,7 @@ class SignupButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ElevatedButton(
-      child: const Text('Sign up'),
+      child: const Text('サインアップ'),
       onPressed: () async {
         await ref.watch(userUsecaseProvider).signUp(
               email: ref.watch(signupEmailControllerProvider).text,

@@ -25,7 +25,7 @@ class RegisterButton extends ConsumerWidget {
           (route) => false, // false を返すことで全ての画面履歴を削除します
         );
       },
-      child: const Text('Register'),
+      child: const Text('登録'),
     );
   }
 }

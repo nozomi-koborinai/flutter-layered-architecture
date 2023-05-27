@@ -21,7 +21,7 @@ class SigninButton extends ConsumerWidget {
           MaterialPageRoute(builder: (context) => HomePage()),
         );
       },
-      child: const Text('Sign in'),
+      child: const Text('サインイン'),
     );
   }
 }

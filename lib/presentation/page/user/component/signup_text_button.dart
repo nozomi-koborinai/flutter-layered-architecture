@@ -14,7 +14,7 @@ class SignupTextButton extends ConsumerWidget {
           MaterialPageRoute(builder: (context) => const SignupPage()),
         );
       },
-      child: const Text('Sign up'),
+      child: const Text('アカウントをお持ちでない場合は登録'),
     );
   }
 }

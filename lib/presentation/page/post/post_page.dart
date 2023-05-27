@@ -11,7 +11,7 @@ class PostPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('New Post'),
+        title: const Text('新しい写真投稿'),
       ),
       body: const SingleChildScrollView(
         child: Padding(

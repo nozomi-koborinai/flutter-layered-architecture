@@ -26,7 +26,7 @@ class EmailTextField extends StatelessWidget {
     return TextField(
       controller: controller,
       decoration: const InputDecoration(
-        labelText: 'Email Address',
+        labelText: 'メールアドレス',
       ),
       keyboardType: TextInputType.emailAddress,
     );
@@ -55,7 +55,7 @@ class PasswordTextField extends StatelessWidget {
     return TextField(
       controller: controller,
       decoration: const InputDecoration(
-        labelText: 'Password',
+        labelText: 'パスワード',
       ),
       obscureText: true,
     );
@@ -77,7 +77,7 @@ class UserNameTextField extends ConsumerWidget {
     return TextField(
       controller: ref.watch(userNameControllerProvider),
       decoration: const InputDecoration(
-        labelText: 'Username',
+        labelText: 'ユーザー名',
       ),
     );
   }

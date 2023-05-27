@@ -10,7 +10,7 @@ class SignupPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sign up'),
+        title: const Text('サインアップ'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

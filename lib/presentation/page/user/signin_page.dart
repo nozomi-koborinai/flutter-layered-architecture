@@ -11,7 +11,7 @@ class SigninPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sign in'),
+        title: const Text('サインイン'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

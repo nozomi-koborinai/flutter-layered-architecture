@@ -36,11 +36,11 @@ class HomePage extends ConsumerWidget {
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.list),
-            label: 'Posts',
+            label: '投稿リスト',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle),
-            label: 'Profile',
+            label: 'プロフィール',
           )
         ],
       ),
