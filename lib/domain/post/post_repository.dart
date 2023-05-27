@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'entity/post.dart';
@@ -26,7 +24,4 @@ abstract interface class PostRepository {
 
   /// 全投稿情報取得
   Future<List<Post>> fetchAll();
-
-  /// 投稿画像をストレージにアップロード
-  Future<String> uploadImage({required File image});
 }
