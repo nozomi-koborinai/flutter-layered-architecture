@@ -46,13 +46,13 @@ class UserUsecase with RunUsecaseMixin {
   Future<void> registerUser({
     required String? uid,
     required String userName,
-    required File image,
+    required File? image,
   }) async {
-    if (uid == null) return;
+    if (uid == null || image == null) return;
     await execute(ref, () async {
       final imageUrl = await storageService.uploadImage(image: image);
       final user = User(id: uid, userName: userName, imageUrl: imageUrl);
-      userRepository.register(user: user);
+      await userRepository.register(user: user);
     });
   }
 }
