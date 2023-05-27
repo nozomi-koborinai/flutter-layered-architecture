@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_reference_app_2/presentation/page/post/post_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class PostViewPage extends ConsumerWidget {
@@ -14,7 +15,13 @@ class PostViewPage extends ConsumerWidget {
       body: const Placeholder(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Add your onPressed code here!
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const PostPage(),
+              fullscreenDialog: true,
+            ),
+          );
         },
         child: const Icon(Icons.photo_camera),
       ),

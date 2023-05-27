@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
 /// 選択中画像を保持するプロバイダー
-final selectedImageProvider = StateProvider<File?>((_) => null);
+final selectedImageProvider = StateProvider.autoDispose<File?>((_) => null);
 
 class UserImageEdit extends ConsumerWidget {
   const UserImageEdit({super.key});
