@@ -19,7 +19,7 @@ class SignupButton extends ConsumerWidget with ErrorHandlerMixin {
           context,
           ref,
           action: () async {
-            await ref.watch(userUsecaseProvider).signUp(
+            await ref.read(userUsecaseProvider).signUp(
                   email: ref.watch(signupEmailControllerProvider).text,
                   password: ref.watch(signUpPasswordControllerProvider).text,
                 );

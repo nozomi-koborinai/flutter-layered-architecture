@@ -17,7 +17,7 @@ class PostButton extends ConsumerWidget with ErrorHandlerMixin {
           context,
           ref,
           action: () async {
-            await ref.watch(postUsecaseProvider).addPost(
+            await ref.read(postUsecaseProvider).addPost(
                   image: ref.watch(selectedPostImageProvider),
                   comment: ref.watch(postCommentControllerProvider).text,
                   user: ref.watch(userProvider),
