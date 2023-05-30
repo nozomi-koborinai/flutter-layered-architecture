@@ -45,9 +45,4 @@ class PostUsecase with RunUsecaseMixin {
       ref.invalidate(postsProvider);
     });
   }
-
-  /// 全投稿情報を取得する
-  Future<List<Post>> fetchAllPosts() async {
-    return await postRepository.fetchAll();
-  }
 }
