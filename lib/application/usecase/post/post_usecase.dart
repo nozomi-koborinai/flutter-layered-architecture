@@ -39,7 +39,7 @@ class PostUsecase with RunUsecaseMixin {
           user: user,
           imageUrl: imageUrl,
           comment: comment,
-          createdAt: null,
+          createdAt: DateTime.now(),
         ),
       );
       ref.invalidate(postsProvider);

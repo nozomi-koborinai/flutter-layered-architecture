@@ -16,7 +16,7 @@ class MockPostRepository implements PostRepository {
       imageUrl:
           "https://1.bp.blogspot.com/-Ax7y4QVbj-c/X5OcVJn04jI/AAAAAAABb8g/aWzcFaud_V42uAc_3xPTisdrKCDeg_OvQCNcBGAsYHQ/s400/food_yukkejan.png",
       comment: "This is post 1",
-      createdAt: DateTime.now().subtract(const Duration(days: 7)),
+      createdAt: DateTime.now().subtract(const Duration(days: 20)),
     ),
     Post(
       id: "002",
@@ -29,7 +29,7 @@ class MockPostRepository implements PostRepository {
       imageUrl:
           "https://1.bp.blogspot.com/-Ax7y4QVbj-c/X5OcVJn04jI/AAAAAAABb8g/aWzcFaud_V42uAc_3xPTisdrKCDeg_OvQCNcBGAsYHQ/s400/food_yukkejan.png",
       comment: "This is post 2",
-      createdAt: DateTime.now().subtract(const Duration(days: 7)),
+      createdAt: DateTime.now().subtract(const Duration(days: 19)),
     ),
     Post(
       id: "003",
@@ -42,7 +42,7 @@ class MockPostRepository implements PostRepository {
       imageUrl:
           "https://1.bp.blogspot.com/-Ax7y4QVbj-c/X5OcVJn04jI/AAAAAAABb8g/aWzcFaud_V42uAc_3xPTisdrKCDeg_OvQCNcBGAsYHQ/s400/food_yukkejan.png",
       comment: "This is post 3",
-      createdAt: DateTime.now().subtract(const Duration(days: 7)),
+      createdAt: DateTime.now().subtract(const Duration(days: 18)),
     ),
     Post(
       id: "004",
@@ -55,7 +55,7 @@ class MockPostRepository implements PostRepository {
       imageUrl:
           "https://1.bp.blogspot.com/-Ax7y4QVbj-c/X5OcVJn04jI/AAAAAAABb8g/aWzcFaud_V42uAc_3xPTisdrKCDeg_OvQCNcBGAsYHQ/s400/food_yukkejan.png",
       comment: "This is post 4",
-      createdAt: DateTime.now().subtract(const Duration(days: 7)),
+      createdAt: DateTime.now().subtract(const Duration(days: 17)),
     ),
     Post(
       id: "005",
@@ -68,7 +68,7 @@ class MockPostRepository implements PostRepository {
       imageUrl:
           "https://1.bp.blogspot.com/-Ax7y4QVbj-c/X5OcVJn04jI/AAAAAAABb8g/aWzcFaud_V42uAc_3xPTisdrKCDeg_OvQCNcBGAsYHQ/s400/food_yukkejan.png",
       comment: "This is post 5",
-      createdAt: DateTime.now().subtract(const Duration(days: 7)),
+      createdAt: DateTime.now().subtract(const Duration(days: 16)),
     ),
     Post(
       id: "006",
@@ -81,7 +81,7 @@ class MockPostRepository implements PostRepository {
       imageUrl:
           "https://1.bp.blogspot.com/-Ax7y4QVbj-c/X5OcVJn04jI/AAAAAAABb8g/aWzcFaud_V42uAc_3xPTisdrKCDeg_OvQCNcBGAsYHQ/s400/food_yukkejan.png",
       comment: "This is post 6",
-      createdAt: DateTime.now().subtract(const Duration(days: 7)),
+      createdAt: DateTime.now().subtract(const Duration(days: 15)),
     ),
     Post(
       id: "007",
@@ -94,7 +94,7 @@ class MockPostRepository implements PostRepository {
       imageUrl:
           "https://1.bp.blogspot.com/-Ax7y4QVbj-c/X5OcVJn04jI/AAAAAAABb8g/aWzcFaud_V42uAc_3xPTisdrKCDeg_OvQCNcBGAsYHQ/s400/food_yukkejan.png",
       comment: "This is post 7",
-      createdAt: DateTime.now().subtract(const Duration(days: 7)),
+      createdAt: DateTime.now().subtract(const Duration(days: 14)),
     ),
     Post(
       id: "008",
@@ -107,7 +107,7 @@ class MockPostRepository implements PostRepository {
       imageUrl:
           "https://1.bp.blogspot.com/-Ax7y4QVbj-c/X5OcVJn04jI/AAAAAAABb8g/aWzcFaud_V42uAc_3xPTisdrKCDeg_OvQCNcBGAsYHQ/s400/food_yukkejan.png",
       comment: "This is post 8",
-      createdAt: DateTime.now().subtract(const Duration(days: 7)),
+      createdAt: DateTime.now().subtract(const Duration(days: 13)),
     ),
   ];
 
@@ -135,6 +135,7 @@ class MockPostRepository implements PostRepository {
   @override
   Future<List<Post>> fetchAll() async {
     await Future.delayed(const Duration(seconds: 2));
+    mockPosts.sort((a, b) => b.createdAt!.compareTo(a.createdAt!));
     return mockPosts;
   }
 
