@@ -12,11 +12,14 @@ class PostView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return ref.watch(postsProvider).when(
           data: (posts) {
-            return ListView.builder(
-              itemCount: posts.length,
-              itemBuilder: (BuildContext context, int index) {
-                return PostItem(post: posts[index]);
-              },
+            return RefreshIndicator(
+              onRefresh: () async => ref.invalidate(postsProvider),
+              child: ListView.builder(
+                itemCount: posts.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return PostItem(post: posts[index]);
+                },
+              ),
             );
           },
           loading: () => const Center(child: CircularProgressIndicator()),
