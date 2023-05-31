@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 
 import 'component/failure_snackbar.dart';
 import 'component/scaffold_messenger.dart';
@@ -25,6 +26,11 @@ class ViewUtils {
         ? SuccessSnackBar(message: message)
         : FailureSnackBar(message: message);
     scaffoldMessengerState.showSnackBar(snackBar);
+  }
+
+  /// DateTime 型 を String 型（yyyy/MM/dd フォーマット）に変換
+  String formatDateToString(DateTime dateTime) {
+    return DateFormat('yyyy/MM/dd').format(dateTime);
   }
 }
 

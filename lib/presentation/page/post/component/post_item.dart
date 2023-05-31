@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_reference_app_2/presentation/view_utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../domain/post/entity/post.dart';
 
-/// 1投稿を表示するためのウィジェット
+/// 1 投稿を表示するためのウィジェット
 class PostItem extends ConsumerWidget {
   const PostItem({required this.post, super.key});
 
@@ -20,6 +21,10 @@ class PostItem extends ConsumerWidget {
               backgroundImage: NetworkImage(post.user.imageUrl),
             ),
             title: Text(post.user.userName),
+            subtitle: Text(
+              ref.read(viewUtilsProvider).formatDateToString(post.createdAt!),
+              style: const TextStyle(fontSize: 12.0),
+            ),
           ),
           Image.network(
             post.imageUrl,
