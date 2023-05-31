@@ -19,9 +19,9 @@ class RegisterButton extends ConsumerWidget with ErrorHandlerMixin {
           ref,
           action: () async {
             await ref.read(userUsecaseProvider).registerUser(
-                  uid: ref.watch(uidProvider),
-                  userName: ref.watch(userNameControllerProvider).text,
-                  image: ref.watch(selectedImageProvider),
+                  uid: ref.read(uidProvider),
+                  userName: ref.read(userNameControllerProvider).text,
+                  image: ref.read(selectedImageProvider),
                 );
             ref.watch(currentIndexProvider.notifier).state =
                 IndexMode.profile.index;

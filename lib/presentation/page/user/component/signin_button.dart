@@ -18,8 +18,8 @@ class SigninButton extends ConsumerWidget with ErrorHandlerMixin {
           ref,
           action: () async {
             await ref.read(userUsecaseProvider).signIn(
-                  email: ref.watch(signinEmailControllerProvider).text,
-                  password: ref.watch(signinPasswordControllerProvider).text,
+                  email: ref.read(signinEmailControllerProvider).text,
+                  password: ref.read(signinPasswordControllerProvider).text,
                 );
             Navigator.pushReplacement(
               context,
@@ -29,7 +29,7 @@ class SigninButton extends ConsumerWidget with ErrorHandlerMixin {
             );
           },
           successMessage:
-              '${ref.watch(signinEmailControllerProvider).text} のユーザーでサインインしました',
+              '${ref.read(signinEmailControllerProvider).text} のユーザーでサインインしました',
         );
       },
       child: const Text('サインイン'),

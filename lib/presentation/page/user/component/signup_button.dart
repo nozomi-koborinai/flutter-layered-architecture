@@ -20,8 +20,8 @@ class SignupButton extends ConsumerWidget with ErrorHandlerMixin {
           ref,
           action: () async {
             await ref.read(userUsecaseProvider).signUp(
-                  email: ref.watch(signupEmailControllerProvider).text,
-                  password: ref.watch(signUpPasswordControllerProvider).text,
+                  email: ref.read(signupEmailControllerProvider).text,
+                  password: ref.read(signUpPasswordControllerProvider).text,
                 );
             ref.watch(currentIndexProvider.notifier).state =
                 IndexMode.profile.index;
