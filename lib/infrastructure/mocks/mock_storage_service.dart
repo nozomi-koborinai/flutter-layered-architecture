@@ -6,6 +6,6 @@ class MockStorageService implements StorageService {
   @override
   Future<String> uploadImage({required File image}) async {
     await Future.delayed(const Duration(seconds: 2));
-    return 'https://example.com/mockimage.jpg';
+    return 'https://1.bp.blogspot.com/-rb5mSYSN8pA/X6tmegQM2ZI/AAAAAAABcLw/_-n5UvfxhJItVJnKRrycKPShVDsxStrjACNcBGAsYHQ/s400/fruit_apple_yellow.png';
   }
 }
