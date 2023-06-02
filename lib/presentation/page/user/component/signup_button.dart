@@ -19,20 +19,20 @@ class SignupButton extends ConsumerWidget with ErrorHandlerMixin {
           context,
           ref,
           action: () async {
+            final navigator = Navigator.of(context);
             await ref.read(userUsecaseProvider).signUp(
                   email: ref.read(signupEmailControllerProvider).text,
                   password: ref.read(signUpPasswordControllerProvider).text,
                 );
             ref.watch(currentIndexProvider.notifier).state =
                 IndexMode.profile.index;
-            Navigator.of(context).pushAndRemoveUntil(
+            navigator.pushAndRemoveUntil(
               MaterialPageRoute(
                 builder: (context) => HomePage(),
               ),
               (route) => false,
             );
-            Navigator.push(
-              context,
+            navigator.push(
               MaterialPageRoute(
                 builder: (context) => const ProfileEditPage(),
               ),

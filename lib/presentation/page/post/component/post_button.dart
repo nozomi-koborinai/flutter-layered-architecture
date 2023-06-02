@@ -17,12 +17,13 @@ class PostButton extends ConsumerWidget with ErrorHandlerMixin {
           context,
           ref,
           action: () async {
+            final navigator = Navigator.of(context);
             await ref.read(postUsecaseProvider).addPost(
                   image: ref.read(selectedPostImageProvider),
                   comment: ref.read(postCommentControllerProvider).text,
                   user: ref.read(userProvider),
                 );
-            Navigator.pop(context);
+            navigator.pop();
           },
           successMessage: '投稿が完了しました',
         );

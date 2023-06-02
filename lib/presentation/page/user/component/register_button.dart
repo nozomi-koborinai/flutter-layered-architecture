@@ -18,6 +18,7 @@ class RegisterButton extends ConsumerWidget with ErrorHandlerMixin {
           context,
           ref,
           action: () async {
+            final navigator = Navigator.of(context);
             await ref.read(userUsecaseProvider).registerUser(
                   uid: ref.read(uidProvider),
                   userName: ref.read(userNameControllerProvider).text,
@@ -25,7 +26,7 @@ class RegisterButton extends ConsumerWidget with ErrorHandlerMixin {
                 );
             ref.watch(currentIndexProvider.notifier).state =
                 IndexMode.profile.index;
-            Navigator.of(context).pop();
+            navigator.pop();
           },
           successMessage: 'プロフィールを登録しました',
         );

@@ -17,12 +17,12 @@ class SigninButton extends ConsumerWidget with ErrorHandlerMixin {
           context,
           ref,
           action: () async {
+            final navigator = Navigator.of(context);
             await ref.read(userUsecaseProvider).signIn(
                   email: ref.read(signinEmailControllerProvider).text,
                   password: ref.read(signinPasswordControllerProvider).text,
                 );
-            Navigator.pushReplacement(
-              context,
+            navigator.pushReplacement(
               MaterialPageRoute(
                 builder: (context) => HomePage(),
               ),
