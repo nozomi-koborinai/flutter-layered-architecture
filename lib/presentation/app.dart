@@ -5,7 +5,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../application/state/overlay_loading_provider.dart';
 import 'component/loading.dart';
-import 'component/scaffold_messenger.dart';
 
 class App extends ConsumerWidget {
   const App({Key? key}) : super(key: key);
@@ -15,7 +14,6 @@ class App extends ConsumerWidget {
     return MaterialApp(
       title: 'SNS',
       debugShowCheckedModeBanner: false,
-      scaffoldMessengerKey: ref.watch(scaffoldMessengerKeyProvider),
       theme: ref.read(themeProvider),
       home: const SigninPage(),
       builder: (context, child) {

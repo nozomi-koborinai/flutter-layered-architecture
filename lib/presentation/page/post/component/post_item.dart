@@ -22,7 +22,7 @@ class PostItem extends ConsumerWidget {
             ),
             title: Text(post.user.userName),
             subtitle: Text(
-              ref.read(viewUtilsProvider).formatDateToString(post.createdAt!),
+              ViewUtils.instance.formatDateToString(post.createdAt!),
               style: const TextStyle(fontSize: 12.0),
             ),
           ),

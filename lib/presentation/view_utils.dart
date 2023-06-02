@@ -1,31 +1,25 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import 'component/failure_snackbar.dart';
-import 'component/scaffold_messenger.dart';
 import 'component/success_snackbar.dart';
-
-/// View に関する Utility メソッド群 プロバイダー
-final viewUtilsProvider = Provider<ViewUtils>(ViewUtils.new);
 
 /// View に関するUtility メソッド群
 class ViewUtils {
-  const ViewUtils(this.ref);
-  final Ref ref;
+  /// singleton
+  ViewUtils._();
+  static final instance = ViewUtils._();
 
   /// スナックバー表示
-  void showSnackBar({
+  void showSnackBar(
+    ScaffoldMessengerState scaffoldMessenger, {
     required String message,
     SnackBarMode mode = SnackBarMode.success,
   }) {
-    final scaffoldMessengerState =
-        ref.watch(scaffoldMessengerKeyProvider).currentState;
-    if (scaffoldMessengerState == null) return;
-
     final snackBar = mode == SnackBarMode.success
         ? SuccessSnackBar(message: message)
         : FailureSnackBar(message: message);
-    scaffoldMessengerState.showSnackBar(snackBar);
+    scaffoldMessenger.showSnackBar(snackBar);
   }
 
   /// DateTime 型 を String 型（yyyy/MM/dd フォーマット）に変換

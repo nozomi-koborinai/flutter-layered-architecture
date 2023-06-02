@@ -15,7 +15,6 @@ class SigninButton extends ConsumerWidget with ErrorHandlerMixin {
       onPressed: () async {
         execute(
           context,
-          ref,
           action: () async {
             final navigator = Navigator.of(context);
             await ref.read(userUsecaseProvider).signIn(

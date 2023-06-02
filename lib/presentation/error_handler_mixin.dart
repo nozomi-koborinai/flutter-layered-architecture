@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_reference_app_2/presentation/view_utils.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// プレゼンテーション層で共通エラーハンドリングを行う Mixin
 mixin ErrorHandlerMixin {
   Future<void> execute(
-    BuildContext context,
-    WidgetRef ref, {
+    BuildContext context, {
     required Future<void> Function() action,
     required String successMessage,
   }) async {
-    final viewUtils = ref.watch(viewUtilsProvider);
-
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     try {
       await action();
-      viewUtils.showSnackBar(
+      ViewUtils.instance.showSnackBar(
+        scaffoldMessenger,
         message: successMessage,
       );
     } catch (e) {
-      viewUtils.showSnackBar(
+      ViewUtils.instance.showSnackBar(
+        scaffoldMessenger,
         message: e.toString(),
         mode: SnackBarMode.failure,
       );
