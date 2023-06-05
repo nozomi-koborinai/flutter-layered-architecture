@@ -7,33 +7,46 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../domain/user/entity/user.dart';
 import '../../../domain/user/user_repository.dart';
+import '../../state/overlay_loading_provider.dart';
 
 /// ユーザーユースケースプロバイダー
 final userUsecaseProvider = Provider<UserUsecase>(
-  UserUsecase.new,
+  (ref) => UserUsecase(
+    userRepository: ref.watch(userRepositoryProvider),
+    storageService: ref.watch(storageServiceProvider),
+    currentUser: ref.watch(userProvider.notifier),
+    loadingController: ref.watch(overlayLoadingProvider.notifier),
+    uidController: ref.watch(uidProvider.notifier),
+  ),
 );
 
 /// ユーザーに関するユースケースを実現するためのクラス
 class UserUsecase with RunUsecaseMixin {
-  UserUsecase(this.ref) {
-    userRepository = ref.watch(userRepositoryProvider);
-    storageService = ref.watch(storageServiceProvider);
-  }
-  final Ref ref;
-  late UserRepository userRepository;
-  late StorageService storageService;
+  UserUsecase({
+    required this.userRepository,
+    required this.storageService,
+    required this.currentUser,
+    required this.loadingController,
+    required this.uidController,
+  });
+
+  final UserRepository userRepository;
+  final StorageService storageService;
+  final CurrentUser currentUser;
+  final StateController<bool> loadingController;
+  final StateController<String?> uidController;
 
   /// サインアップ
   Future<void> signUp({
     required String email,
     required String password,
   }) async {
-    await execute(ref, () async {
+    await execute(loadingController, () async {
       final uid = await userRepository.signUp(
         email: email,
         password: password,
       );
-      ref.watch(uidProvider.notifier).state = uid;
+      uidController.state = uid;
     });
   }
 
@@ -42,13 +55,13 @@ class UserUsecase with RunUsecaseMixin {
     required String email,
     required String password,
   }) async {
-    await execute(ref, () async {
+    await execute(loadingController, () async {
       final user = await userRepository.signIn(
         email: email,
         password: password,
       );
-      ref.watch(uidProvider.notifier).state = user.id;
-      ref.watch(userProvider.notifier).set(user);
+      uidController.state = user.id;
+      currentUser.set(user);
     });
   }
 
@@ -59,14 +72,14 @@ class UserUsecase with RunUsecaseMixin {
     required File? image,
   }) async {
     if (uid == null) return;
-    await execute(ref, () async {
+    await execute(loadingController, () async {
       var imageUrl = '';
       if (image != null) {
         imageUrl = await storageService.uploadImage(image: image);
       }
       final user = User(id: uid, userName: userName, imageUrl: imageUrl);
       final updatedUser = await userRepository.register(user: user);
-      ref.watch(userProvider.notifier).set(updatedUser);
+      currentUser.set(updatedUser);
     });
   }
 }
