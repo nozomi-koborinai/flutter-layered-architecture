@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_reference_app_2/presentation/page/post/component/post_button.dart';
-import 'package:flutter_reference_app_2/presentation/page/post/component/post_comment_field.dart';
-import 'package:flutter_reference_app_2/presentation/page/post/component/post_image.dart';
+import 'package:flutter_layered_architecture/presentation/page/post/component/post_button.dart';
+import 'package:flutter_layered_architecture/presentation/page/post/component/post_comment_field.dart';
+import 'package:flutter_layered_architecture/presentation/page/post/component/post_image.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class PostPage extends ConsumerWidget {

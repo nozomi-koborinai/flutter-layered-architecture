@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_reference_app_2/presentation/view_utils.dart';
+import 'package:flutter_layered_architecture/presentation/view_utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../domain/post/entity/post.dart';

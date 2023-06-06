@@ -1,4 +1,4 @@
-package com.example.flutter_reference_app_2
+package com.example.flutter_layered_architecture
 
 import io.flutter.embedding.android.FlutterActivity
 

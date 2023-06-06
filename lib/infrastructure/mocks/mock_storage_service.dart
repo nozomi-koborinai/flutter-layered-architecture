@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:flutter_reference_app_2/domain/service/storage_service.dart';
+import 'package:flutter_layered_architecture/domain/service/storage_service.dart';
 
 class MockStorageService implements StorageService {
   /// 指定画像を外部ストレージに保存した程にして、ダミーの保存先 URL を返却

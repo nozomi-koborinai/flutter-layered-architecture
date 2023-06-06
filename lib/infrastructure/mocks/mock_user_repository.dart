@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:flutter_reference_app_2/domain/user/entity/user.dart';
-import 'package:flutter_reference_app_2/domain/user/user_repository.dart';
+import 'package:flutter_layered_architecture/domain/user/entity/user.dart';
+import 'package:flutter_layered_architecture/domain/user/user_repository.dart';
 
 class MockUserRepository implements UserRepository {
   final mockUserId = 'mockuser000';

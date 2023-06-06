@@ -1,5 +1,5 @@
-import 'package:flutter_reference_app_2/domain/post/entity/post.dart';
-import 'package:flutter_reference_app_2/domain/post/post_repository.dart';
+import 'package:flutter_layered_architecture/domain/post/entity/post.dart';
+import 'package:flutter_layered_architecture/domain/post/post_repository.dart';
 
 import '../../domain/user/entity/user.dart';
 

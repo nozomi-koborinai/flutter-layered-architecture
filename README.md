@@ -1,1 +1,1 @@
-# flutter_reference_app_2
+# flutter_layered_architecture

@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:flutter_reference_app_2/application/state/overlay_loading_provider.dart';
-import 'package:flutter_reference_app_2/domain/service/storage_service.dart';
+import 'package:flutter_layered_architecture/application/state/overlay_loading_provider.dart';
+import 'package:flutter_layered_architecture/domain/service/storage_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../domain/post/entity/post.dart';

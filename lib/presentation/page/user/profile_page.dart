@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_reference_app_2/presentation/page/user/profile_edit_page.dart';
+import 'package:flutter_layered_architecture/presentation/page/user/profile_edit_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../application/usecase/user/state/user_provider.dart';

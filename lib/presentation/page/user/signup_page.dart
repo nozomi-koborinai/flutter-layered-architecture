@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_reference_app_2/presentation/page/user/component/signup_button.dart';
-import 'package:flutter_reference_app_2/presentation/page/user/component/text_field.dart';
+import 'package:flutter_layered_architecture/presentation/page/user/component/signup_button.dart';
+import 'package:flutter_layered_architecture/presentation/page/user/component/text_field.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SignupPage extends ConsumerWidget {

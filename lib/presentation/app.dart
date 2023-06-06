@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_reference_app_2/presentation/page/user/signin_page.dart';
-import 'package:flutter_reference_app_2/presentation/theme.dart';
+import 'package:flutter_layered_architecture/presentation/page/user/signin_page.dart';
+import 'package:flutter_layered_architecture/presentation/theme.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../application/state/overlay_loading_provider.dart';

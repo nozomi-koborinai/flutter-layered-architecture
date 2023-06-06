@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_reference_app_2/domain/post/entity/post.dart';
-import 'package:flutter_reference_app_2/domain/user/entity/user.dart';
-import 'package:flutter_reference_app_2/presentation/page/post/component/post_item.dart';
+import 'package:flutter_layered_architecture/domain/post/entity/post.dart';
+import 'package:flutter_layered_architecture/domain/user/entity/user.dart';
+import 'package:flutter_layered_architecture/presentation/page/post/component/post_item.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

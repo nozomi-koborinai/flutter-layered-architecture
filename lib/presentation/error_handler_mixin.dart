@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_reference_app_2/presentation/view_utils.dart';
+import 'package:flutter_layered_architecture/presentation/view_utils.dart';
 
 /// プレゼンテーション層で共通エラーハンドリングを行う Mixin
 mixin ErrorHandlerMixin {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_reference_app_2/application/usecase/user/state/user_provider.dart';
+import 'package:flutter_layered_architecture/application/usecase/user/state/user_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// Signin Email アドレス入力用のテキストコントローラープロバイダー

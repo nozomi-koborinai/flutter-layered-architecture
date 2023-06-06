@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:flutter_reference_app_2/application/usecase/run_usecase_mixin.dart';
-import 'package:flutter_reference_app_2/application/usecase/user/state/user_provider.dart';
-import 'package:flutter_reference_app_2/domain/service/storage_service.dart';
+import 'package:flutter_layered_architecture/application/usecase/run_usecase_mixin.dart';
+import 'package:flutter_layered_architecture/application/usecase/user/state/user_provider.dart';
+import 'package:flutter_layered_architecture/domain/service/storage_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../domain/user/entity/user.dart';

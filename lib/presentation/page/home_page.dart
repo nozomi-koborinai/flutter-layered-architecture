@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_reference_app_2/presentation/page/post/post_view_page.dart';
-import 'package:flutter_reference_app_2/presentation/page/user/profile_page.dart';
+import 'package:flutter_layered_architecture/presentation/page/post/post_view_page.dart';
+import 'package:flutter_layered_architecture/presentation/page/user/profile_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// ボトムバー選択中インデックスプロバイダー
