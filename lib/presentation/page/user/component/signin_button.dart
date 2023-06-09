@@ -6,7 +6,7 @@ import 'package:flutter_layered_architecture/presentation/page/user/component/te
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// サインインボタン
-class SigninButton extends ConsumerWidget with ErrorHandlerMixin {
+class SigninButton extends ConsumerWidget with PresentationMixin {
   const SigninButton({super.key});
 
   @override

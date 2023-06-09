@@ -7,7 +7,7 @@ import 'package:flutter_layered_architecture/presentation/page/user/component/te
 import 'package:flutter_layered_architecture/presentation/page/user/component/user_image_edit.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class RegisterButton extends ConsumerWidget with ErrorHandlerMixin {
+class RegisterButton extends ConsumerWidget with PresentationMixin {
   const RegisterButton({super.key});
 
   @override

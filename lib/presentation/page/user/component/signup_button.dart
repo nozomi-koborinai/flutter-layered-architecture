@@ -7,7 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../home_page.dart';
 
-class SignupButton extends ConsumerWidget with ErrorHandlerMixin {
+class SignupButton extends ConsumerWidget with PresentationMixin {
   const SignupButton({super.key});
 
   @override

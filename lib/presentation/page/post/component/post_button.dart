@@ -7,7 +7,7 @@ import 'package:flutter_layered_architecture/presentation/page/post/component/po
 import 'package:flutter_layered_architecture/presentation/page/post/component/post_image.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class PostButton extends ConsumerWidget with ErrorHandlerMixin {
+class PostButton extends ConsumerWidget with PresentationMixin {
   const PostButton({super.key});
 
   @override

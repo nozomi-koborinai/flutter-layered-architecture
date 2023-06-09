@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_layered_architecture/presentation/view_utils.dart';
 
-/// プレゼンテーション層で共通エラーハンドリングを行う Mixin
-mixin ErrorHandlerMixin {
+/// プレゼンテーション層用のエラーハンドリングをラップした共通処理 Mixin
+mixin PresentationMixin {
   Future<void> execute(
     BuildContext context, {
     required Future<void> Function() action,
