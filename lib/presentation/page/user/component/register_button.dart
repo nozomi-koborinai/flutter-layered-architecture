@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_layered_architecture/application/usecase/user/state/user_provider.dart';
 import 'package:flutter_layered_architecture/application/usecase/user/user_usecase.dart';
-import 'package:flutter_layered_architecture/presentation/error_handler_mixin.dart';
+import 'package:flutter_layered_architecture/presentation/presentation_mixin.dart';
 import 'package:flutter_layered_architecture/presentation/page/home_page.dart';
 import 'package:flutter_layered_architecture/presentation/page/user/component/text_field.dart';
 import 'package:flutter_layered_architecture/presentation/page/user/component/user_image_edit.dart';
