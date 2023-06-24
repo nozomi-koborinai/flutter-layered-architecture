@@ -20,10 +20,11 @@ final postUsecaseProvider = Provider<PostUsecase>(
 
 /// 投稿ユースケース
 class PostUsecase with RunUsecaseMixin {
-  PostUsecase(
-      {required this.postRepository,
-      required this.storageService,
-      required this.loadingController});
+  PostUsecase({
+    required this.postRepository,
+    required this.storageService,
+    required this.loadingController,
+  });
 
   final PostRepository postRepository;
   final StorageService storageService;

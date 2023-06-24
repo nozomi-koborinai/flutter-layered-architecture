@@ -6,6 +6,7 @@ import '../../../../domain/post/entity/post.dart';
 
 /// 1 投稿を表示するためのウィジェット
 class PostItem extends ConsumerWidget {
+  // in: 表示対象の投稿エンティティ
   const PostItem({required this.post, super.key});
 
   final Post post;
@@ -22,6 +23,7 @@ class PostItem extends ConsumerWidget {
             ),
             title: Text(post.user.userName),
             subtitle: Text(
+              // 画面表示に関するものはプレゼンテーション層の責務なのでドメイン層で変換処理はせず utility クラスを使用
               ViewUtils.instance.formatDateToString(post.createdAt!),
               style: const TextStyle(fontSize: 12.0),
             ),
