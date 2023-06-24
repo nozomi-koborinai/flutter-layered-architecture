@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_layered_architecture/presentation/view_utils.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../domain/post/entity/post.dart';
 
 /// 1 投稿を表示するためのウィジェット
-class PostItem extends ConsumerWidget {
+class PostItem extends StatelessWidget {
   // in: 表示対象の投稿エンティティ
   const PostItem({required this.post, super.key});
 
   final Post post;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return Card(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
