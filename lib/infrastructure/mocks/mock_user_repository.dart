@@ -12,7 +12,7 @@ class MockUserRepository implements UserRepository {
   @override
   Future<User> signIn({required String email, required String password}) async {
     await Future.delayed(const Duration(seconds: 2));
-    if (email != 'test@gmail.com' || password != 'test') {
+    if (email != 'test@example.com' || password != 'test') {
       throw Exception('メールアドレス または パスワードが異なります');
     }
     return User(
