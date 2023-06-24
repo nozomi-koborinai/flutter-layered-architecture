@@ -18,6 +18,7 @@ class PostButton extends ConsumerWidget with PresentationMixin {
           context,
           action: () async {
             final navigator = Navigator.of(context);
+            // アプリケーション層の処理呼び出し
             await ref.read(postUsecaseProvider).addPost(
                   image: ref.read(selectedPostImageProvider),
                   comment: ref.read(postCommentControllerProvider).text,

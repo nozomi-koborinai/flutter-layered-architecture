@@ -5,6 +5,9 @@ import 'entity/user.dart';
 /// ユーザーリポジトリプロバイダー
 /// アプリ起動時 or テスト時に本プロバイダーを override して使用してください
 final userRepositoryProvider = Provider<UserRepository>(
+  // 初期値を UserRepositoryImpl にしてしまうと、
+  // ドメイン層がインフラ層に依存してしまうことになるので、
+  // どの層にも依存させないために未実装エラーを返却するようにしておく
   (_) => throw UnimplementedError(),
 );
 
