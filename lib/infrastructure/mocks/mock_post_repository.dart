@@ -132,7 +132,6 @@ class MockPostRepository implements PostRepository {
   @override
   Future<List<Post>> fetchAll() async {
     await Future.delayed(const Duration(seconds: 2));
-    mockPosts.sort((a, b) => b.createdAt!.compareTo(a.createdAt!));
     return mockPosts;
   }
 

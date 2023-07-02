@@ -50,4 +50,15 @@ class PostUsecase with RunUsecaseMixin {
       );
     });
   }
+
+  /// 投稿の全件取得処理
+  ///
+  /// 取得後に作成日時が新しい順に並び替える
+  Future<List<Post>> fetchAll() async {
+    final posts = await execute(loadingController, () async {
+      return await postRepository.fetchAll();
+    });
+
+    return posts..sort((a, b) => b.createdAt!.compareTo(a.createdAt!));
+  }
 }
