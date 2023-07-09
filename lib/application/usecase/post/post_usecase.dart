@@ -59,6 +59,9 @@ class PostUsecase with RunUsecaseMixin {
       return await postRepository.fetchAll();
     });
 
-    return posts..sort((a, b) => b.createdAt!.compareTo(a.createdAt!));
+    final sortedPosts = posts
+      ..sort((a, b) => b.createdAt!.compareTo(a.createdAt!));
+
+    return sortedPosts;
   }
 }
