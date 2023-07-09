@@ -10,8 +10,6 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   late ProviderContainer container;
-  late MockPostRepository repository;
-  // late PostUsecase usecase;
 
   setUp(() {
     container = ProviderContainer(
@@ -20,8 +18,6 @@ void main() {
         storageServiceProvider.overrideWithValue(MockStorageService()),
       ],
     );
-    repository = container.read(postRepositoryProvider) as MockPostRepository;
-    // usecase = container.read(postUsecaseProvider);
   });
 
   /// fetchAll用テスト
@@ -47,39 +43,20 @@ void main() {
   group('addPost', () {
     /// 現在時点のタイムスタンプから生成したidを用いて、実際にレポジトリに投稿が追加されているのか確認する
     test('投稿が追加されている', () async {
-      /// usecaseをテストする場合
-      ///
-      // TODO(masaki): 動かない理由を徳田さんに相談
-      // final userId = DateTime.now().microsecondsSinceEpoch.toString();
-      // final usecase = container.read(postUsecaseProvider);
-      //
-      // await usecase.addPost(
-      //   comment: '',
-      //   image: null,
-      //   user: User(
-      //     id: userId,
-      //     userName: '',
-      //     imageUrl: '',
-      //   ),
-      // );
-      //
-      // final posts = await usecase.fetchAll();
-      // final addedPost = posts.first;
-      //
-      // expect(addedPost.user.id, userId);
-
-      /// repositoryをテストする場合
-      // TODO(masaki): repositoryをテストする理由を徳田さんに相談
+      final repository =
+          container.read(postRepositoryProvider) as MockPostRepository;
 
       final id = DateTime.now().microsecondsSinceEpoch.toString();
 
       await repository.add(
-          post: Post(
-              id: id,
-              user: const User(id: '', userName: '', imageUrl: ''),
-              imageUrl: '',
-              comment: '',
-              createdAt: DateTime.now()));
+        post: Post(
+          id: id,
+          user: const User(id: '', userName: '', imageUrl: ''),
+          imageUrl: '',
+          comment: '',
+          createdAt: DateTime.now(),
+        ),
+      );
       final addedPost = repository.mockPosts.last;
 
       expect(addedPost.id, id);
