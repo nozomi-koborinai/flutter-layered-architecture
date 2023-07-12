@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_layered_architecture/application/usecase/post/post_usecase.dart';
 import 'package:flutter_layered_architecture/domain/post/entity/post.dart';
 import 'package:flutter_layered_architecture/domain/post/post_repository.dart';
@@ -41,25 +43,23 @@ void main() {
 
   /// addPost用テスト
   group('addPost', () {
-    /// 現在時点のタイムスタンプから生成したidを用いて、実際にレポジトリに投稿が追加されているのか確認する
+    /// 投稿ユースケースによって投稿数が増えることを確認する
     test('投稿が追加されている', () async {
       final repository =
           container.read(postRepositoryProvider) as MockPostRepository;
+      final usecase = container.read(postUsecaseProvider);
 
-      final id = DateTime.now().microsecondsSinceEpoch.toString();
+      // まず追加前の投稿件数を確認
+      expect(repository.mockPosts.length, 8);
 
-      await repository.add(
-        post: Post(
-          id: id,
-          user: const User(id: '', userName: '', imageUrl: ''),
-          imageUrl: '',
+      await usecase.addPost(
+          image: File(''),
           comment: '',
-          createdAt: DateTime.now(),
-        ),
-      );
-      final addedPost = repository.mockPosts.last;
+          user: const User(id: '', userName: '', imageUrl: ''));
 
-      expect(addedPost.id, id);
+      // 追加後の投稿件数を確認
+      // + 1 されているはず
+      expect(repository.mockPosts.length, 9);
     });
   });
 }
