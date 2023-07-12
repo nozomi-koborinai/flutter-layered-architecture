@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter_layered_architecture/application/usecase/post/post_usecase.dart';
-import 'package:flutter_layered_architecture/domain/post/entity/post.dart';
 import 'package:flutter_layered_architecture/domain/post/post_repository.dart';
 import 'package:flutter_layered_architecture/domain/service/storage_service.dart';
 import 'package:flutter_layered_architecture/domain/user/entity/user.dart';
