@@ -37,31 +37,32 @@ class PostUsecase with RunUsecaseMixin {
     required User? user,
   }) async {
     if (image == null || user == null) return;
-    await execute(loadingController, () async {
-      final imageUrl = await storageService.uploadImage(image: image);
-      await postRepository.add(
-        post: Post(
-          id: null,
-          user: user,
-          imageUrl: imageUrl,
-          comment: comment,
-          createdAt: DateTime.now(),
-        ),
-      );
-    });
+    await execute(
+        loadingController: loadingController,
+        action: () async {
+          final imageUrl = await storageService.uploadImage(image: image);
+          await postRepository.add(
+            post: Post(
+              id: null,
+              user: user,
+              imageUrl: imageUrl,
+              comment: comment,
+              createdAt: DateTime.now(),
+            ),
+          );
+        });
   }
 
   /// 投稿の全件取得処理
   ///
   /// 取得後に作成日時が新しい順に並び替える
   Future<List<Post>> fetchAll() async {
-    final posts = await execute(loadingController, () async {
+    final posts = await execute(action: () async {
       return await postRepository.fetchAll();
     });
 
     final sortedPosts = posts
       ..sort((a, b) => b.createdAt!.compareTo(a.createdAt!));
-
     return sortedPosts;
   }
 }

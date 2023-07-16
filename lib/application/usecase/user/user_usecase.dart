@@ -41,13 +41,15 @@ class UserUsecase with RunUsecaseMixin {
     required String email,
     required String password,
   }) async {
-    await execute(loadingController, () async {
-      final uid = await userRepository.signUp(
-        email: email,
-        password: password,
-      );
-      uidController.state = uid;
-    });
+    await execute(
+        loadingController: loadingController,
+        action: () async {
+          final uid = await userRepository.signUp(
+            email: email,
+            password: password,
+          );
+          uidController.state = uid;
+        });
   }
 
   /// サインイン
@@ -55,14 +57,16 @@ class UserUsecase with RunUsecaseMixin {
     required String email,
     required String password,
   }) async {
-    await execute(loadingController, () async {
-      final user = await userRepository.signIn(
-        email: email,
-        password: password,
-      );
-      uidController.state = user.id;
-      currentUser.set(user);
-    });
+    await execute(
+        loadingController: loadingController,
+        action: () async {
+          final user = await userRepository.signIn(
+            email: email,
+            password: password,
+          );
+          uidController.state = user.id;
+          currentUser.set(user);
+        });
   }
 
   /// ユーザー情報追加 または 更新
@@ -72,14 +76,16 @@ class UserUsecase with RunUsecaseMixin {
     required File? image,
   }) async {
     if (uid == null) return;
-    await execute(loadingController, () async {
-      var imageUrl = '';
-      if (image != null) {
-        imageUrl = await storageService.uploadImage(image: image);
-      }
-      final user = User(id: uid, userName: userName, imageUrl: imageUrl);
-      final updatedUser = await userRepository.register(user: user);
-      currentUser.set(updatedUser);
-    });
+    await execute(
+        loadingController: loadingController,
+        action: () async {
+          var imageUrl = '';
+          if (image != null) {
+            imageUrl = await storageService.uploadImage(image: image);
+          }
+          final user = User(id: uid, userName: userName, imageUrl: imageUrl);
+          final updatedUser = await userRepository.register(user: user);
+          currentUser.set(updatedUser);
+        });
   }
 }
