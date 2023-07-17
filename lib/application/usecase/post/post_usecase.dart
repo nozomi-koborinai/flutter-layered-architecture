@@ -36,7 +36,12 @@ class PostUsecase with RunUsecaseMixin {
     required String comment,
     required User? user,
   }) async {
-    if (image == null || user == null) return;
+    if (image == null) {
+      throw Exception('画像を選択してください');
+    }
+    if (user == null) {
+      throw Exception('エラーが発生しました');
+    }
     await execute(
         loadingController: loadingController,
         action: () async {
