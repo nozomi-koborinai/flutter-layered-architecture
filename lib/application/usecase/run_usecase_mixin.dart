@@ -10,9 +10,10 @@ mixin RunUsecaseMixin {
     StateController<bool>? loadingController,
     required Future<T> Function() action,
   }) async {
-    final enableLoading = loadingController != null;
+    final disableLoading = loadingController == null;
 
-    if (!enableLoading) {
+    //
+    if (disableLoading) {
       try {
         return await action();
       } catch (e) {
