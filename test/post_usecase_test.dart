@@ -42,44 +42,6 @@ void main() {
 
   /// addPost用テスト
   group('addPost', () {
-    /// 投稿ユースケースによって投稿数が増えることを確認する
-    test('投稿が追加されている', () async {
-      final repository =
-          container.read(postRepositoryProvider) as MockPostRepository;
-      final usecase = container.read(postUsecaseProvider);
-
-      // まず追加前の投稿件数を確認
-      expect(repository.mockPosts.length, 8);
-
-      await usecase.addPost(
-          image: File(''),
-          comment: '',
-          user: const User(id: '', userName: '', imageUrl: ''));
-
-      // 追加後の投稿件数を確認
-      // + 1 されているはず
-      expect(repository.mockPosts.length, 9);
-    });
-  });
-
-  /// 投稿されないパターンのテスト
-  group('投稿されないパターン', () {
-    test('ユーザーがnullの場合は投稿されない', () async {
-      final repository =
-          container.read(postRepositoryProvider) as MockPostRepository;
-      final usecase = container.read(postUsecaseProvider);
-
-      // まず追加前の投稿件数を確認
-      expect(repository.mockPosts.length, 8);
-
-      await usecase.addPost(image: File(''), comment: '', user: null);
-
-      // 追加後の投稿件数を確認
-      // 何も追加されていないはず
-      expect(repository.mockPosts.length, 8);
-    });
-
-    /// 画像がnullの場合
     test('画像がnullの場合は投稿されない', () async {
       final repository =
           container.read(postRepositoryProvider) as MockPostRepository;
@@ -98,8 +60,7 @@ void main() {
       expect(repository.mockPosts.length, 8);
     });
 
-    /// 画像とユーザーがnullの場合
-    test('画像とユーザーがnullの場合は投稿されない', () async {
+    test('ユーザーがnullの場合は投稿されない', () async {
       final repository =
           container.read(postRepositoryProvider) as MockPostRepository;
       final usecase = container.read(postUsecaseProvider);
@@ -107,11 +68,29 @@ void main() {
       // まず追加前の投稿件数を確認
       expect(repository.mockPosts.length, 8);
 
-      await usecase.addPost(image: null, comment: '', user: null);
+      await usecase.addPost(image: File(''), comment: '', user: null);
 
       // 追加後の投稿件数を確認
       // 何も追加されていないはず
       expect(repository.mockPosts.length, 8);
+    });
+
+    test('投稿が追加されている', () async {
+      final repository =
+          container.read(postRepositoryProvider) as MockPostRepository;
+      final usecase = container.read(postUsecaseProvider);
+
+      // まず追加前の投稿件数を確認
+      expect(repository.mockPosts.length, 8);
+
+      await usecase.addPost(
+          image: File(''),
+          comment: '',
+          user: const User(id: '', userName: '', imageUrl: ''));
+
+      // 追加後の投稿件数を確認
+      // + 1 されているはず
+      expect(repository.mockPosts.length, 9);
     });
   });
 }
