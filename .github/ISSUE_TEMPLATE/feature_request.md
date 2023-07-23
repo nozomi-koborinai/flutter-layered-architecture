@@ -1,7 +1,7 @@
 ---
 name: 機能リクエスト
 about: 追加または改善を希望する機能について教えてください
-title: ''
+title: '[feature] '
 labels: 'enhancement'
 assignees: ''
 

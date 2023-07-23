@@ -1,7 +1,7 @@
 ---
 name: バグ報告
 about: 動作しないものや予期しない動作について報告してください
-title: ''
+title: '[bug] '
 labels: 'bug'
 assignees: ''
 
