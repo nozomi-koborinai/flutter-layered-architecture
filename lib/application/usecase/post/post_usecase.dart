@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_layered_architecture/application/state/overlay_loading_provider.dart';
+import 'package:flutter_layered_architecture/domain/app_exception.dart';
 import 'package:flutter_layered_architecture/domain/service/storage_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -37,10 +38,10 @@ class PostUsecase with RunUsecaseMixin {
     required User? user,
   }) async {
     if (image == null) {
-      throw Exception('画像を選択してください');
+      throw const AppException(message: '画像を選択してください');
     }
     if (user == null) {
-      throw Exception('エラーが発生しました');
+      throw const AppException();
     }
     await execute(
         loadingController: loadingController,
