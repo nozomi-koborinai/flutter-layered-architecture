@@ -38,7 +38,7 @@ class PostUsecase with RunUsecaseMixin {
     required User? user,
   }) async {
     if (image == null) {
-      throw const AppException(message: '画像を選択してください');
+      throw const AppException('画像を選択してください');
     }
     if (user == null) {
       throw const AppException();

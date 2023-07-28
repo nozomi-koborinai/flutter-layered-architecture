@@ -15,7 +15,7 @@ class MockUserRepository implements UserRepository {
   Future<User> signIn({required String email, required String password}) async {
     await Future.delayed(const Duration(seconds: 2));
     if (email != 'test@example.com' || password != 'test') {
-      throw const AppException(message: 'メールアドレス または パスワードが異なります');
+      throw const AppException('メールアドレス または パスワードが異なります');
     }
     return User(
       id: mockUserId,
@@ -29,7 +29,7 @@ class MockUserRepository implements UserRepository {
       {required String email, required String password}) async {
     await Future.delayed(const Duration(seconds: 2));
     if (!email.contains('@')) {
-      throw const AppException(message: 'メールアドレスの形式が不正です');
+      throw const AppException('メールアドレスの形式が不正です');
     }
     return mockUserId;
   }

@@ -3,9 +3,7 @@ class AppException implements Exception {
   /// ユーザーに表示するメッセージ
   /// 指定しない場合はデフォルトのメッセージを表示する
   final String message;
-  const AppException({
-    this.message = 'エラーが発生しました',
-  });
+  const AppException([this.message = 'エラーが発生しました']);
 
   @override
   String toString() {
