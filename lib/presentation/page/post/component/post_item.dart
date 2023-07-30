@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_layered_architecture/presentation/view_utils.dart';
+import 'package:flutter_layered_architecture/presentation/datetime_extension.dart';
 
 import '../../../../domain/post/entity/post.dart';
 
@@ -22,8 +22,8 @@ class PostItem extends StatelessWidget {
             ),
             title: Text(post.user.userName),
             subtitle: Text(
-              // 画面表示に関するものはプレゼンテーション層の責務なのでドメイン層で変換処理はせず utility クラスを使用
-              ViewUtils.instance.formatDateToString(post.createdAt!),
+              // フォーマット等の画面表示に関するものは、ドメイン層ではなくプレゼンテーション層の責務なのでここで変換
+              post.createdAt!.toFormatDateString,
               style: const TextStyle(fontSize: 12.0),
             ),
           ),
