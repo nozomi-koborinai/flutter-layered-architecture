@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 /// 処理成功用スナックバー
 class SuccessSnackBar extends SnackBar {
-  SuccessSnackBar({super.key, required String message})
+  SuccessSnackBar._({required String message})
       : super(
           content: Text(message),
           behavior: SnackBarBehavior.floating,
@@ -10,4 +10,11 @@ class SuccessSnackBar extends SnackBar {
             borderRadius: BorderRadius.circular(8.0),
           ),
         );
+
+  static void show(
+    ScaffoldMessengerState scaffoldMessenger, {
+    required String message,
+  }) {
+    scaffoldMessenger.showSnackBar(SuccessSnackBar._(message: message));
+  }
 }
