@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter_layered_architecture/domain/user/entity/user.dart';
 import 'package:flutter_layered_architecture/domain/user/user_repository.dart';
 
+import '../../domain/app_exception.dart';
+
 class MockUserRepository implements UserRepository {
   final mockUserId = 'mockuser000';
   final mockUserName = 'Mock User';
@@ -13,7 +15,7 @@ class MockUserRepository implements UserRepository {
   Future<User> signIn({required String email, required String password}) async {
     await Future.delayed(const Duration(seconds: 2));
     if (email != 'test@example.com' || password != 'test') {
-      throw Exception('メールアドレス または パスワードが異なります');
+      throw const AppException('メールアドレス または パスワードが異なります');
     }
     return User(
       id: mockUserId,
@@ -27,7 +29,7 @@ class MockUserRepository implements UserRepository {
       {required String email, required String password}) async {
     await Future.delayed(const Duration(seconds: 2));
     if (!email.contains('@')) {
-      throw Exception('メールアドレスの形式が不正です');
+      throw const AppException('メールアドレスの形式が不正です');
     }
     return mockUserId;
   }
