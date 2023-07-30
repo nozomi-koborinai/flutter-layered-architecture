@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_layered_architecture/domain/app_exception.dart';
 import 'package:flutter_layered_architecture/presentation/view_utils.dart';
 
 /// プレゼンテーション層用のエラーハンドリングをラップした共通処理 Mixin
@@ -15,7 +16,7 @@ mixin PresentationMixin {
         scaffoldMessenger,
         message: successMessage,
       );
-    } catch (e) {
+    } on AppException catch (e) {
       ViewUtils.instance.showSnackBar(
         scaffoldMessenger,
         message: e.toString(),
