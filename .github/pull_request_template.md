@@ -1,12 +1,3 @@
----
-name: Pull Request
-about: 新機能やバグ修正の提案を行ってください
-title: ''
-labels: ''
-assignees: ''
-
----
-
 ## 関連する Issue
 
 - #0
