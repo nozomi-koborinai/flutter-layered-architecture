@@ -19,12 +19,14 @@ final postUsecaseProvider = Provider<PostUsecase>(
 /// 投稿ユースケース
 class PostUsecase with RunUsecaseMixin {
   PostUsecase(this._ref);
+
   final Ref _ref;
 
   PostRepository get _postRepository => _ref.read(postRepositoryProvider);
   StorageService get _storageService => _ref.read(storageServiceProvider);
   StateController<bool> get _loadingController =>
       _ref.read(overlayLoadingProvider.notifier);
+  void _invalidatePostsProvider() => _ref.invalidate(postsProvider);
 
   /// 新規投稿をする
   Future<void> addPost({
@@ -52,7 +54,7 @@ class PostUsecase with RunUsecaseMixin {
             ),
           );
         });
-    _ref.invalidate(postsProvider);
+    _invalidatePostsProvider();
   }
 
   /// 投稿の全件取得処理
