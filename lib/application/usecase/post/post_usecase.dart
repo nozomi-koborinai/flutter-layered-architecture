@@ -22,6 +22,7 @@ class PostUsecase with RunUsecaseMixin {
 
   final Ref _ref;
 
+  /// 別Providerに依存するものはここに定義して利用する
   PostRepository get _postRepository => _ref.read(postRepositoryProvider);
   StorageService get _storageService => _ref.read(storageServiceProvider);
   StateController<bool> get _loadingController =>

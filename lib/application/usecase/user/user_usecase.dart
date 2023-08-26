@@ -20,6 +20,7 @@ class UserUsecase with RunUsecaseMixin {
 
   final Ref _ref;
 
+  /// 別Providerに依存するものはここに定義して利用する
   UserRepository get _userRepository => _ref.read(userRepositoryProvider);
   StorageService get _storageService => _ref.read(storageServiceProvider);
   CurrentUser get _currentUser => _ref.read(userProvider.notifier);
