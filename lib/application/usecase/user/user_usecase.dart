@@ -11,30 +11,23 @@ import '../../state/overlay_loading_provider.dart';
 
 /// ユーザーユースケースプロバイダー
 final userUsecaseProvider = Provider<UserUsecase>(
-  (ref) => UserUsecase(
-    userRepository: ref.watch(userRepositoryProvider),
-    storageService: ref.watch(storageServiceProvider),
-    currentUser: ref.watch(userProvider.notifier),
-    loadingController: ref.watch(overlayLoadingProvider.notifier),
-    uidController: ref.watch(uidProvider.notifier),
-  ),
+  UserUsecase.new,
 );
 
 /// ユーザーに関するユースケースを実現するためのクラス
 class UserUsecase with RunUsecaseMixin {
-  UserUsecase({
-    required this.userRepository,
-    required this.storageService,
-    required this.currentUser,
-    required this.loadingController,
-    required this.uidController,
-  });
+  UserUsecase(this._ref);
 
-  final UserRepository userRepository;
-  final StorageService storageService;
-  final CurrentUser currentUser;
-  final StateController<bool> loadingController;
-  final StateController<String?> uidController;
+  final Ref _ref;
+
+  /// 別Providerに依存するものはここに定義して利用する
+  UserRepository get _userRepository => _ref.read(userRepositoryProvider);
+  StorageService get _storageService => _ref.read(storageServiceProvider);
+  CurrentUser get _currentUser => _ref.read(userProvider.notifier);
+  StateController<bool> get _loadingController =>
+      _ref.read(overlayLoadingProvider.notifier);
+  StateController<String?> get _uidController =>
+      _ref.read(uidProvider.notifier);
 
   /// サインアップ
   Future<void> signUp({
@@ -42,13 +35,13 @@ class UserUsecase with RunUsecaseMixin {
     required String password,
   }) async {
     await execute(
-        loadingController: loadingController,
+        loadingController: _loadingController,
         action: () async {
-          final uid = await userRepository.signUp(
+          final uid = await _userRepository.signUp(
             email: email,
             password: password,
           );
-          uidController.state = uid;
+          _uidController.state = uid;
         });
   }
 
@@ -58,14 +51,14 @@ class UserUsecase with RunUsecaseMixin {
     required String password,
   }) async {
     await execute(
-        loadingController: loadingController,
+        loadingController: _loadingController,
         action: () async {
-          final user = await userRepository.signIn(
+          final user = await _userRepository.signIn(
             email: email,
             password: password,
           );
-          uidController.state = user.id;
-          currentUser.set(user);
+          _uidController.state = user.id;
+          _currentUser.set(user);
         });
   }
 
@@ -77,15 +70,15 @@ class UserUsecase with RunUsecaseMixin {
   }) async {
     if (uid == null) return;
     await execute(
-        loadingController: loadingController,
+        loadingController: _loadingController,
         action: () async {
           var imageUrl = '';
           if (image != null) {
-            imageUrl = await storageService.uploadImage(image: image);
+            imageUrl = await _storageService.uploadImage(image: image);
           }
           final user = User(id: uid, userName: userName, imageUrl: imageUrl);
-          final updatedUser = await userRepository.register(user: user);
-          currentUser.set(updatedUser);
+          final updatedUser = await _userRepository.register(user: user);
+          _currentUser.set(updatedUser);
         });
   }
 }

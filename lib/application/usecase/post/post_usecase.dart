@@ -9,27 +9,25 @@ import '../../../domain/post/entity/post.dart';
 import '../../../domain/post/post_repository.dart';
 import '../../../domain/user/entity/user.dart';
 import '../run_usecase_mixin.dart';
+import 'state/posts_provider.dart';
 
 /// 投稿ユースケースプロバイダー
 final postUsecaseProvider = Provider<PostUsecase>(
-  (ref) => PostUsecase(
-    postRepository: ref.watch(postRepositoryProvider),
-    storageService: ref.watch(storageServiceProvider),
-    loadingController: ref.watch(overlayLoadingProvider.notifier),
-  ),
+  PostUsecase.new,
 );
 
 /// 投稿ユースケース
 class PostUsecase with RunUsecaseMixin {
-  PostUsecase({
-    required this.postRepository,
-    required this.storageService,
-    required this.loadingController,
-  });
+  PostUsecase(this._ref);
 
-  final PostRepository postRepository;
-  final StorageService storageService;
-  final StateController<bool> loadingController;
+  final Ref _ref;
+
+  /// 別Providerに依存するものはここに定義して利用する
+  PostRepository get _postRepository => _ref.read(postRepositoryProvider);
+  StorageService get _storageService => _ref.read(storageServiceProvider);
+  StateController<bool> get _loadingController =>
+      _ref.read(overlayLoadingProvider.notifier);
+  void _invalidatePostsProvider() => _ref.invalidate(postsProvider);
 
   /// 新規投稿をする
   Future<void> addPost({
@@ -44,10 +42,10 @@ class PostUsecase with RunUsecaseMixin {
       throw const AppException();
     }
     await execute(
-        loadingController: loadingController,
+        loadingController: _loadingController,
         action: () async {
-          final imageUrl = await storageService.uploadImage(image: image);
-          await postRepository.add(
+          final imageUrl = await _storageService.uploadImage(image: image);
+          await _postRepository.add(
             post: Post(
               id: null,
               user: user,
@@ -57,6 +55,7 @@ class PostUsecase with RunUsecaseMixin {
             ),
           );
         });
+    _invalidatePostsProvider();
   }
 
   /// 投稿の全件取得処理
@@ -64,7 +63,7 @@ class PostUsecase with RunUsecaseMixin {
   /// 取得後に作成日時が新しい順に並び替える
   Future<List<Post>> fetchAll() async {
     final posts = await execute(action: () async {
-      return await postRepository.fetchAll();
+      return await _postRepository.fetchAll();
     });
 
     final sortedPosts = posts
