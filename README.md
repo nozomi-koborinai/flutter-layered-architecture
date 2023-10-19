@@ -21,9 +21,7 @@ fvm use 3.13.8
 
 利用しているIDEに応じて以下のように設定する。
 #### Android Studio/IntelliJ IDEAの場合)
-以下[こちらの記事](https://zenn.dev/mamushi/scraps/13c0232c88227e)を参考にスクショのように各環境を設定する
-
-![](../../../Library/Application Support/CleanShot/media/media_vZMO2CJhIs/CleanShot 2023-08-05 at 16.12.19@2x.png)
+[こちらの記事](https://zenn.dev/mamushi/scraps/13c0232c88227e)を参考に各環境を設定する
 
 #### VS Codeの場合)
 launch.json経由でビルドする。
