@@ -49,3 +49,6 @@ macos
 linux
 
 .czrc
+
+# fvm
+.fvm/flutter_sdk
