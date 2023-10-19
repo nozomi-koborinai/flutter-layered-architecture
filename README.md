@@ -28,3 +28,8 @@ fvm use 3.13.8
 #### VS Codeの場合)
 launch.json経由でビルドする。
 [参考](https://zenn.dev/altiveinc/articles/separating-environments-in-flutter?redirected=1#vs-code-%E3%81%AE%E8%A8%AD%E5%AE%9A%E4%BE%8B)
+
+### ログイン方法
+デモ環境においては、以下を入力してログインする。  
+メールアドレス：test@example.com  
+パスワード：test  
