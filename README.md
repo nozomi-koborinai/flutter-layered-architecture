@@ -1,4 +1,7 @@
-# flutter_layered_architecture
+## このプロジェクトについて
+Flutter大学メンバーで執筆した『Flutter設計パターン入門』の第７章 [『レイヤードアーキテクチャで作る』](https://zenn.dev/flutteruniv/books/flutter-architecture/viewer/5_layered-architecture
+) で紹介しているサンプルアプリ。
+
 
 ## 環境構築
 
